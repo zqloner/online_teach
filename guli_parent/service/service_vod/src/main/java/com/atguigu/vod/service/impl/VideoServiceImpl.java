@@ -4,6 +4,7 @@ import com.aliyun.vod.upload.impl.UploadVideoImpl;
 import com.aliyun.vod.upload.req.UploadStreamRequest;
 import com.aliyun.vod.upload.resp.UploadStreamResponse;
 import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.vod.model.v20170321.DeleteVideoRequest;
 import com.aliyuncs.vod.model.v20170321.DeleteVideoResponse;
 import com.atguigu.servicebase.exceptionhandler.GuliException;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * @Description:
@@ -76,6 +78,30 @@ public class VideoServiceImpl implements VideoService {
             System.out.print("RequestId = " + response.getRequestId() + "\n");
 
         }catch (Exception e){
+            throw new GuliException(20001, "视频删除失败");
+        }
+    }
+
+    @Override
+    public void removeVideoList(List<String> videoIdList) {
+        try {
+            //初始化
+            DefaultAcsClient client = AliyunVodSDKUtils.initVodClient(
+                    ConstantPropertiesUtil.ACCESS_KEY_ID,
+                    ConstantPropertiesUtil.ACCESS_KEY_SECRET);
+
+            //创建请求对象
+            //一次只能批量删20个
+            String str = org.apache.commons.lang.StringUtils.join(videoIdList.toArray(), ",");
+            DeleteVideoRequest request = new DeleteVideoRequest();
+            request.setVideoIds(str);
+
+            //获取响应
+            DeleteVideoResponse response = client.getAcsResponse(request);
+
+            System.out.print("RequestId = " + response.getRequestId() + "\n");
+
+        } catch (ClientException e) {
             throw new GuliException(20001, "视频删除失败");
         }
     }

@@ -84,9 +84,20 @@ public class EduChapterServiceImpl extends ServiceImpl<EduChapterMapper, EduChap
         //根据id查询是否存在视频，如果有则提示用户尚有子节点
         if(eduVideoService.getCountByChapterId(id)){
             throw new GuliException(20001,"该分章节下存在视频课程，请先删除视频课程");
+
         }
 
         Integer result = baseMapper.deleteById(id);
         return null != result && result > 0;
+    }
+
+    @Override
+    public boolean removeByCourseId(String id) {
+        //根据课程id查询所有视频列表
+        QueryWrapper<EduChapter> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("course_id", id);
+        queryWrapper.select("id");
+        int delete = baseMapper.delete(queryWrapper);
+        return delete > 0;
     }
 }

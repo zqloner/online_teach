@@ -97,5 +97,17 @@ public class EduCourseController {
 
         return  R.ok().data("total", total).data("rows", records);
     }
+
+    @ApiOperation(value = "删除课程")
+    @DeleteMapping("{courseId}")
+    public R deleteCourse(
+            @PathVariable String  courseId){
+        boolean flag = eduCourseService.removeCourseById(courseId);
+        if (flag) {
+            return R.ok();
+        } else {
+            return R.error();
+        }
+    }
 }
 

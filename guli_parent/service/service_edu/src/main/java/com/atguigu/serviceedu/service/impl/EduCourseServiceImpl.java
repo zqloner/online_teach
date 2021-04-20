@@ -7,8 +7,10 @@ import com.atguigu.serviceedu.entity.vo.CourseInfoVo;
 import com.atguigu.serviceedu.entity.vo.CoursePublishVo;
 import com.atguigu.serviceedu.entity.vo.CourseQuery;
 import com.atguigu.serviceedu.mapper.EduCourseMapper;
+import com.atguigu.serviceedu.service.EduChapterService;
 import com.atguigu.serviceedu.service.EduCourseDescriptionService;
 import com.atguigu.serviceedu.service.EduCourseService;
+import com.atguigu.serviceedu.service.EduVideoService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -31,6 +33,10 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
     @Resource
     private EduCourseDescriptionService eduCourseDescriptionService;
+    @Resource
+    private EduChapterService eduChapterService;
+    @Resource
+    private EduVideoService eduVideoService;
 
     @Override
     public String saveCourseInfo(CourseInfoVo courseInfoForm) {
@@ -116,5 +122,23 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         EduCourseDescription eduCourseDescription = eduCourseDescriptionService.getById(id);
         courseInfoVo.setDescription(eduCourseDescription.getDescription());
         return courseInfoVo;
+    }
+
+    @Override
+    public boolean removeCourseById(String id) {
+
+        //根据id删除所有视频
+        eduVideoService.removeByCourseId(id);
+
+        //根据id删除所有章节
+        eduChapterService.removeByCourseId(id);
+
+        //根据id删除所有课程详情
+        eduCourseDescriptionService.removeById(id);
+
+        //删除封面 TODO 独立完成
+
+        Integer result = baseMapper.deleteById(id);
+        return null != result && result > 0;
     }
 }
