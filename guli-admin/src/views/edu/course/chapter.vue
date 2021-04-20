@@ -230,7 +230,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        return chapter.removeById(chapterId)
+        return  chapter.removeById(chapterId)
       }).then(() => {
         this.fetchChapterNestedListByCourseId()// 刷新列表
         this.$message({
@@ -242,11 +242,6 @@ export default {
           this.$message({
             type: 'info',
             message: '已取消删除'
-          })
-        } else {
-          this.$message({
-            type: 'error',
-            message: response.message
           })
         }
       })

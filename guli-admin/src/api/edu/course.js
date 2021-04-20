@@ -37,4 +37,11 @@ export default {
       params: searchObj
     })
   },
+  deleteCourse(courseId) {
+    return request({
+      url: `${api_name}/${courseId}`,
+      method: 'delete',
+      params: courseId
+    })
+  },
 }
