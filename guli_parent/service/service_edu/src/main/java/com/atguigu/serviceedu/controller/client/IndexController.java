@@ -20,7 +20,7 @@ import java.util.List;
  * @Company: MGL
  */
 @RestController
-@RequestMapping("/serviceedu/index")
+@RequestMapping("/serviceedu/client")
 public class IndexController {
     @Autowired
     private EduCourseService courseService;
@@ -42,6 +42,6 @@ public class IndexController {
         wrapperTeacher.last("limit 4");
         List<EduTeacher> teacherList = teacherService.list(wrapperTeacher);
 
-        return R.ok().data("eduList",eduList).data("teacherList",teacherList);
+        return R.ok().data("courseList",eduList).data("teacherList",teacherList);
     }
 }
