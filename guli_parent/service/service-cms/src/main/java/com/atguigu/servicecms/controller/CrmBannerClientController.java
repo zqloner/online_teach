@@ -19,7 +19,7 @@ import java.util.List;
  * @Company: MGL
  */
 @RestController
-@RequestMapping("/educms/banner")
+@RequestMapping("/servicecms/client-banner")
 @Api("客户端首页Banner列表")
 public class CrmBannerClientController {
     @Autowired

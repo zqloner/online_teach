@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @Api("管理端网站Banner接口")
-@RequestMapping("/servicecms/crm-banner")
+@RequestMapping("/servicecms/admin-banner")
 public class CrmBannerAdminController {
 
     @Autowired
