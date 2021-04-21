@@ -37,35 +37,35 @@ public class CrmBannerAdminController {
             @PathVariable Long limit) {
 
         Page<CrmBanner> pageParam = new Page<>(page, limit);
-        bannerService.page(pageParam,null);
+        bannerService.pageBanner(pageParam,null);
         return R.ok().data("items", pageParam.getRecords()).data("total", pageParam.getTotal());
     }
 
     @ApiOperation(value = "获取Banner")
     @GetMapping("get/{id}")
     public R get(@PathVariable String id) {
-        CrmBanner banner = bannerService.getById(id);
+        CrmBanner banner = bannerService.getBannerById(id);
         return R.ok().data("item", banner);
     }
 
     @ApiOperation(value = "新增Banner")
     @PostMapping("save")
     public R save(@RequestBody CrmBanner banner) {
-        bannerService.save(banner);
+        bannerService.saveBanner(banner);
         return R.ok();
     }
 
     @ApiOperation(value = "修改Banner")
     @PutMapping("update")
     public R updateById(@RequestBody CrmBanner banner) {
-        bannerService.updateById(banner);
+        bannerService.updateBannerById(banner);
         return R.ok();
     }
 
     @ApiOperation(value = "删除Banner")
     @DeleteMapping("remove/{id}")
     public R remove(@PathVariable String id) {
-        bannerService.removeById(id);
+        bannerService.removeBannerById(id);
         return R.ok();
     }
 }
