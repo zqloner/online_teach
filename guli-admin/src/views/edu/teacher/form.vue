@@ -73,7 +73,7 @@ export default {
         sort: 0,
         level: 1,
         career: '',
-        avatar: '',
+        avatar: process.env.OSS_PATH + 'online_teach/avatar/aaa.jpeg',
         intro: '',
       },
       BASE_API: process.env.BASE_API, // 接口API地址
@@ -104,7 +104,7 @@ export default {
           sort: 0,
           level: 1,
           career: '',
-          avatar: '',
+          avatar: process.env.OSS_PATH + '/online_teach/avatar/aaa.jpeg',
           intro: '',
         }
       }

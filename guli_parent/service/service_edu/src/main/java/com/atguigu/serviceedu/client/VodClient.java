@@ -1,6 +1,7 @@
 package com.atguigu.serviceedu.client;
 
 import com.atguigu.commonutils.R;
+import com.atguigu.serviceedu.client.impl.VodFileDegradeFeignClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,7 +16,7 @@ import java.util.List;
  * @CreateTime: 2021/4/209:35
  * @Company: MGL
  */
-@FeignClient("service-vod")
+@FeignClient(name="service-vod",fallback = VodFileDegradeFeignClient.class )
 @Component
 public interface VodClient {
     @DeleteMapping(value = "/servicevod/video/{videoId}")

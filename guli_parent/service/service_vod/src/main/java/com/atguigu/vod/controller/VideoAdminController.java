@@ -50,8 +50,8 @@ public class VideoAdminController {
     @DeleteMapping("delete-batch")
     public R removeVideoList(
             @ApiParam(name = "videoIdList", value = "云端视频id", required = true)
-            @RequestParam("videoIdList") List videoIdList){
-
+            @RequestParam("videoIdList") List videoIdList) throws InterruptedException {
+        Thread.sleep(1000);
         videoService.removeVideoList(videoIdList);
         return R.ok().message("视频删除成功");
     }
