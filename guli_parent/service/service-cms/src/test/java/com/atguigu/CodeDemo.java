@@ -1,4 +1,4 @@
-package com.atguigu.eduservice;
+package com.atguigu;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -14,11 +14,10 @@ import org.junit.Test;
 /**
  * @Description:
  * @Author: zhangqi
- * @CreateTime: 2021/4/817:15
+ * @CreateTime: 2021/4/2111:37
  * @Company: MGL
  */
-public class CodeGenerator {
-
+public class CodeDemo {
     @Test
     public void main1() {
 
@@ -29,7 +28,7 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
         System.out.println(projectPath);
-        gc.setOutputDir("D:\\workspace\\ideaWorkSpace\\online_teach\\guli_parent\\service\\service-edu" + "/src/main/java");
+        gc.setOutputDir("D:\\workspace\\ideaWorkSpace\\online_teach\\guli_parent\\service\\service-cms" + "/src/main/java");
         gc.setAuthor("zhangqi");
         gc.setOpen(false); //生成后是否打开资源管理器
         gc.setFileOverride(false); //重新生成时文件是否覆盖(写成ture会覆盖之前生成的或者编码代码)
@@ -55,7 +54,7 @@ public class CodeGenerator {
 
         // 4、包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("serviceedu"); //模块名
+        pc.setModuleName("servicecms"); //模块名
         pc.setParent("com.atguigu");
         pc.setController("controller");
         pc.setEntity("entity");
@@ -65,7 +64,7 @@ public class CodeGenerator {
 
         // 5、策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setInclude("edu_video");
+        strategy.setInclude("crm_banner");
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
         strategy.setTablePrefix(pc.getModuleName() + "_"); //生成实体时去掉表前缀
 
