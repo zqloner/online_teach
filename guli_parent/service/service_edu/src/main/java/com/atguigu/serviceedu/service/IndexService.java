@@ -1,6 +1,9 @@
 package com.atguigu.serviceedu.service;
 
-import java.util.Map;
+import com.atguigu.serviceedu.entity.EduCourse;
+import com.atguigu.serviceedu.entity.EduTeacher;
+
+import java.util.List;
 
 /**
  * @Description:
@@ -9,5 +12,6 @@ import java.util.Map;
  * @Company: MGL
  */
 public interface IndexService {
-    public Map<String, Object> getClientHotCourseAndTeacher();
+    public List<EduCourse> getClientHotCourse();
+    public List<EduTeacher> getClientHotTeacher();
 }

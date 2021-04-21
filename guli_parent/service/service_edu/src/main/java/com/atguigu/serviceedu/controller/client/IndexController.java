@@ -23,6 +23,6 @@ public class IndexController {
     //查询前8条热门课程，查询前4条名师
     @GetMapping("index")
     public R index() {
-        return R.ok().data(indexService.getClientHotCourseAndTeacher());
+        return R.ok().data("courseList",indexService.getClientHotCourse()).data("teacherList", indexService.getClientHotTeacher());
     }
 }

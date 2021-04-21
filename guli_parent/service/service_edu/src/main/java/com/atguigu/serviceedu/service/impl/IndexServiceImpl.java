@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Description:
@@ -27,24 +25,25 @@ public class IndexServiceImpl  implements IndexService {
     @Autowired
     private EduTeacherService teacherService;
 
+    @Cacheable(value = "client",key = "'hostCourse'")
     @Override
-    //查询所有banner
-    @Cacheable(value = "client",key = "'hostTeacherAndCourse'")
-    public Map<String, Object> getClientHotCourseAndTeacher() {
-        Map<String, Object> map = new HashMap<>();
+    public List<EduCourse> getClientHotCourse() {
         //查询前8条热门课程
         QueryWrapper<EduCourse> wrapper = new QueryWrapper<>();
         wrapper.orderByDesc("id");
         wrapper.last("limit 8");
         List<EduCourse> eduList = courseService.list(wrapper);
+        return eduList;
+    }
 
+    @Cacheable(value = "client",key = "'hostTeacher'")
+    @Override
+    public List<EduTeacher> getClientHotTeacher() {
         //查询前4条名师
         QueryWrapper<EduTeacher> wrapperTeacher = new QueryWrapper<>();
         wrapperTeacher.orderByDesc("id");
         wrapperTeacher.last("limit 4");
         List<EduTeacher> teacherList = teacherService.list(wrapperTeacher);
-        map.put("courseList", eduList);
-        map.put("teacherList", teacherList);
-        return map;
+        return teacherList;
     }
 }
