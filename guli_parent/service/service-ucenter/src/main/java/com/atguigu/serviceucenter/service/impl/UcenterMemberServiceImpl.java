@@ -41,25 +41,24 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
 
         //校验参数
         if(StringUtils.isEmpty(mobile) ||
-                StringUtils.isEmpty(password) ||
-                StringUtils.isEmpty(mobile)) {
-            throw new GuliException(20001,"error");
+                StringUtils.isEmpty(password)) {
+            throw new GuliException(20001,"账号或密码不能为空");
         }
 
         //获取会员
         UcenterMember ucenterMember = baseMapper.selectOne(new QueryWrapper<UcenterMember>().eq("mobile", mobile));
         if(null == ucenterMember) {
-            throw new GuliException(20001,"error");
+            throw new GuliException(20001,"账号不存在");
         }
 
         //校验密码
         if(!MD5.encrypt(password).equals(ucenterMember.getPassword())) {
-            throw new GuliException(20001,"error");
+            throw new GuliException(20001,"密码输入不正确");
         }
 
         //校验是否被禁用
         if(ucenterMember.getIsDisabled()) {
-            throw new GuliException(20001,"error");
+            throw new GuliException(20001,"该账号已被禁用");
         }
 
         //使用JWT生成token字符串
@@ -80,18 +79,18 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         String code = registerVo.getCode();
 
         //校验参数
-        if(StringUtils.isEmpty(mobile) ||
+        if(StringUtils.isEmpty(nickname) ||
                 StringUtils.isEmpty(mobile) ||
                 StringUtils.isEmpty(password) ||
                 StringUtils.isEmpty(code)) {
-            throw new GuliException(20001,"error");
+            throw new GuliException(20001,"注册失败,输入内容不能为空！");
         }
 
         //校验校验验证码
         //从redis获取发送的验证码
         String mobleCode = redisTemplate.opsForValue().get(mobile);
         if(!code.equals(mobleCode)) {
-            throw new GuliException(20001,"error");
+            throw new GuliException(20001,"验证码错误");
         }
 
         //查询数据库中是否存在相同的手机号码
