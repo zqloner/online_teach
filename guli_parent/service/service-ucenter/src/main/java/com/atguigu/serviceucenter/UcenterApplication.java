@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @CreateTime: 2021/4/229:21
  * @Company: MGL
  */
-@ComponentScan({"com.atguigu"})
+@ComponentScan(basePackages = {"com.atguigu"})
 @SpringBootApplication//取消数据源自动配置
 @MapperScan("com.atguigu.serviceucenter.mapper")
 public class UcenterApplication{
