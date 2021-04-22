@@ -1,6 +1,6 @@
 package com.atguigu.serviceedu.controller.client;
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.serviceedu.service.IndexService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package com.atguigu.serviceedu.controller;
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import org.springframework.web.bind.annotation.*;
 
 /**

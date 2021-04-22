@@ -1,6 +1,6 @@
 package com.atguigu.oss.controller;
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.oss.service.FileService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -1,6 +1,6 @@
 package com.atguigu.servicemsm.controller;
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.servicemsm.service.MsmService;
 import com.atguigu.servicemsm.util.RandomUtil;
 import org.springframework.beans.factory.annotation.Autowired;

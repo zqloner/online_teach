@@ -1,6 +1,6 @@
 package com.atguigu.vod.controller;
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.vod.service.VideoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;

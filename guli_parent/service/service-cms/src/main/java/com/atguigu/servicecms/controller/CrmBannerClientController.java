@@ -1,6 +1,6 @@
 package com.atguigu.servicecms.controller;
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.servicecms.entity.CrmBanner;
 import com.atguigu.servicecms.service.CrmBannerService;
 import io.swagger.annotations.Api;

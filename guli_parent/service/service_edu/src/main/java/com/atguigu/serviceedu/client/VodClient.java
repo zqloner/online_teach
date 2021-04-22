@@ -1,6 +1,6 @@
 package com.atguigu.serviceedu.client;
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.serviceedu.client.impl.VodFileDegradeFeignClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;

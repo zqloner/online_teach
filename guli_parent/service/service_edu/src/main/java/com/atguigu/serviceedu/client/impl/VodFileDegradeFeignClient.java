@@ -1,6 +1,6 @@
 package com.atguigu.serviceedu.client.impl;
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.serviceedu.client.VodClient;
 import org.springframework.stereotype.Component;
 

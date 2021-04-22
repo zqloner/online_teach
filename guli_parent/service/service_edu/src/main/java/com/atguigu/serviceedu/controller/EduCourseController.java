@@ -1,7 +1,7 @@
 package com.atguigu.serviceedu.controller;
 
 
-import com.atguigu.commonutils.R;
+import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.serviceedu.entity.EduCourse;
 import com.atguigu.serviceedu.entity.vo.CourseInfoVo;
 import com.atguigu.serviceedu.entity.vo.CoursePublishVo;
