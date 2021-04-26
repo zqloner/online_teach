@@ -109,4 +109,12 @@ public class UcenterMemberServiceImpl extends ServiceImpl<UcenterMemberMapper, U
         this.save(ucenterMember);
     }
 
+    @Override
+    public UcenterMember getByOpenid(String openid) {
+        QueryWrapper<UcenterMember> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("openid", openid);
+
+        UcenterMember ucenterMember = baseMapper.selectOne(queryWrapper);
+        return ucenterMember;
+    }
 }
