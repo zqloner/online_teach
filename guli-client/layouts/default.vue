@@ -138,6 +138,7 @@ import "~/assets/css/web.css";
 import cookie from 'js-cookie'
 import userApi from '@/api/login'
 export default {
+  name:'default',
   data() {
     return {
       token: '',

@@ -70,6 +70,7 @@
     import registerApi from '@/api/register'
 
     export default {
+      name:'register',
       layout: 'sign',
       data() {
         return {

@@ -119,6 +119,7 @@
 import banner from "@/api/banner"
 import index from '@/api/index'
 export default {
+  name:'index',
   data () {
     return {
       swiperOption: {

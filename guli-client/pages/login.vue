@@ -46,6 +46,7 @@ import cookie from 'js-cookie'
 
 import loginApi from '@/api/login'
 export default {
+  name:'login',
   layout: 'sign',
 
   data () {

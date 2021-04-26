@@ -193,7 +193,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name:'teacher',
+};
 </script>
 <style scoped>
 

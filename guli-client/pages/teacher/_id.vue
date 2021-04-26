@@ -110,7 +110,9 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name:'teacherDeatil',
+};
 </script>
 
 <style scoped>

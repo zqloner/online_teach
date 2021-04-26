@@ -172,7 +172,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name:'courseDetail',
+};
 </script>
 <style scoped>
 
