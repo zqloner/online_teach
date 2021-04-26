@@ -154,10 +154,24 @@ export default {
   },
 
   created() {
-    this.showInfo()
+    //获取路径里面的token值
+    this.token = this.$route.query.token
+    if (this.token) { //判断路径中是否有token
+      this.wxLogin()
+    }
+    this.showInfo();
   },
 
   methods: {
+    wxLogin() {
+      //把token值放到cookie中
+      cookie.set('guli_token', this.token, {domain: 'localhost'})
+      //调用接口,根据token值获取用户信息
+      userApi.getLoginInfo().then(response=>{
+        this.loginInfo = response.data.data.item
+        cookie.set('guli_ucenter', this.loginInfo, {domain: 'localhost'})
+      })
+    },
     showInfo() {
       //debugger
       var jsonStr = cookie.get("guli_ucenter");
