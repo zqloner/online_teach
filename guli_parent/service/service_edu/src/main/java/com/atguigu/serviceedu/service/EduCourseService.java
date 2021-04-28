@@ -4,10 +4,12 @@ import com.atguigu.serviceedu.entity.EduCourse;
 import com.atguigu.serviceedu.entity.vo.CourseInfoVo;
 import com.atguigu.serviceedu.entity.vo.CoursePublishVo;
 import com.atguigu.serviceedu.entity.vo.CourseQuery;
+import com.atguigu.serviceedu.entity.vo.front.CourseQueryVo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -32,4 +34,6 @@ public interface EduCourseService extends IService<EduCourse> {
     public boolean removeCourseById(String id);
 
     List<EduCourse> selectByTeacherId(String teacherId);
+
+    Map<String, Object> pageListWeb(Page<EduCourse> pageParam, CourseQueryVo courseQuery);
 }
