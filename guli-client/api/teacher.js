@@ -6,5 +6,11 @@ export default {
       url: `${api_name}/getTeacherFrontList/${page}/${limit}`,
       method: 'get'
     })
+  },
+  getById(teacherId) {
+    return request({
+      url: `/serviceedu/edu-teacher/getTeacher/${teacherId}`,
+      method: 'get'
+    })
   }
 }

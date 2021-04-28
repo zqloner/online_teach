@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -140,5 +141,22 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
 
         Integer result = baseMapper.deleteById(id);
         return null != result && result > 0;
+    }
+
+    /**
+     * 根据讲师id查询当前讲师的课程列表
+     * @param teacherId
+     * @return
+     */
+    @Override
+    public List<EduCourse> selectByTeacherId(String teacherId) {
+        QueryWrapper<EduCourse> queryWrapper = new QueryWrapper<EduCourse>();
+
+        queryWrapper.eq("teacher_id", teacherId);
+        //按照最后更新时间倒序排列
+        queryWrapper.orderByDesc("gmt_modified");
+
+        List<EduCourse> courses = baseMapper.selectList(queryWrapper);
+        return courses;
     }
 }

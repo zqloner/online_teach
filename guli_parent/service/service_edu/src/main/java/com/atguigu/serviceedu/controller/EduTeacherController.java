@@ -2,8 +2,10 @@ package com.atguigu.serviceedu.controller;
 
 
 import com.atguigu.commonutils.commonresult.R;
+import com.atguigu.serviceedu.entity.EduCourse;
 import com.atguigu.serviceedu.entity.EduTeacher;
 import com.atguigu.serviceedu.entity.vo.TeacherQuery;
+import com.atguigu.serviceedu.service.EduCourseService;
 import com.atguigu.serviceedu.service.EduTeacherService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -29,6 +31,9 @@ import java.util.List;
 public class EduTeacherController {
     @Autowired
     private EduTeacherService teacherService;
+
+    @Autowired
+    private EduCourseService eduCourseService;
 
     /*
     1，查询所有讲师方法
@@ -119,7 +124,10 @@ public class EduTeacherController {
             @PathVariable String id){
 
         EduTeacher eduTeacher = teacherService.getById(id);
-        return R.ok().data("item", eduTeacher);
+        //根据讲师id查询这个讲师的课程列表
+        List<EduCourse> courseList = eduCourseService.selectByTeacherId(id);
+
+        return R.ok().data("item", eduTeacher).data("courseList", courseList);
     }
 
     @ApiOperation(value = "根据ID修改讲师")

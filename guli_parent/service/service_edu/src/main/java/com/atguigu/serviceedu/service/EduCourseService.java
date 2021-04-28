@@ -7,6 +7,8 @@ import com.atguigu.serviceedu.entity.vo.CourseQuery;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程 服务类
@@ -28,4 +30,6 @@ public interface EduCourseService extends IService<EduCourse> {
     CourseInfoVo getCourseInfoFormById(String id);
 
     public boolean removeCourseById(String id);
+
+    List<EduCourse> selectByTeacherId(String teacherId);
 }

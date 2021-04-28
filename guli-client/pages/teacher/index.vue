@@ -16,7 +16,7 @@
       <section class="c-sort-box unBr">
         <div>
           <!-- /无数据提示 开始-->
-          <section v-if="data.total == 0" class="no-data-wrap">
+          <section v-if="data.length == 0" class="no-data-wrap">
             <em class="icon30 no-data-ico">&nbsp;</em>
             <span class="c-666 fsize14 ml10 vam">没有相关数据，小编正在努力整理中...</span>
           </section>
@@ -26,12 +26,12 @@
               <li v-for="teacher in data.items" :key="teacher.id">
                 <section class="i-teach-wrap">
                   <div class="i-teach-pic">
-                    <a href="/teacher/1" :title="teacher.name" target="_blank">
+                    <a :href="'/teacher/'+teacher.id" :title="teacher.name" target="_blank">
                       <img :src="teacher.avatar" :alt="teacher.name">
                     </a>
                   </div>
                   <div class="mt10 hLh30 txtOf tac">
-                    <a href="/teacher/1" :title="teacher.name" target="_blank" class="fsize18 c-666">{{ teacher.name }}</a>
+                    <a :href="'/teacher/'+teacher.id" :title="teacher.name" target="_blank" class="fsize18 c-666">{{ teacher.name }}</a>
                   </div>
                   <div class="hLh30 txtOf tac">
                     <span class="fsize14 c-999">{{teacher.intro}}</span>
