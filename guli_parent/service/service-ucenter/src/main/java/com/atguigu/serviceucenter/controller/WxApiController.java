@@ -136,7 +136,7 @@ public class WxApiController {
             ucenterMember = new UcenterMember();
             ucenterMember.setNickname(nickname);
             ucenterMember.setOpenid(openid);
-            ucenterMember.setAvatar(headimgurl);
+            ucenterMember.setAvatar(headimgurl.replace("https","http"));
             ucenterMemberService.save(ucenterMember);
         }
             //TODO 登录
