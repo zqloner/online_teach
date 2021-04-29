@@ -166,9 +166,9 @@
                           </aside>
                           <div class="of">
                     <span class="fl">
-                    <font class="fsize12 c-blue">
-                      {{comment.nickname}}</font>
-                    <font class="fsize12 c-999 ml5">评论：</font></span>
+                    <div class="fsize12 c-blue">
+                      {{comment.nickname}}</div>
+                    <div class="fsize12 c-999 ml5">评论：</div></span>
                           </div>
                           <div class="noter-txt mt5">
                             <p>{{comment.content}}</p>
@@ -297,7 +297,6 @@ export default {
     },
     initComment(){
       comment.getPageList(this.page, this.limit, this.course.id).then(response => {
-        debugger;
         this.data = response.data.data
       })
     },
