@@ -290,7 +290,6 @@ export default {
     initData(){
       this.courseId = this.$route.params.id
       course.getById(this.courseId).then(response => {
-        debugger;
         this.course = response.data.data.course
         this.chapterList = response.data.data.chapterVoList
       })
