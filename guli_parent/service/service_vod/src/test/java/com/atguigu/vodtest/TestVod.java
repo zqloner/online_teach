@@ -22,7 +22,7 @@ public class TestVod {
         testVedioUpload();
 
 //        获取上传的凭证
-//        getPlayAuth();
+        getPlayAuth();
 //        获取上传视频的播放url
 //        getPlayUrl();
     }
@@ -66,7 +66,7 @@ public class TestVod {
         try {
 
             //设置请求参数
-            request.setVideoId("2cf1b26cc24c4f3d880d9617663923da");
+            request.setVideoId("58d89e01e78f460396948f6a73c007de");
             //获取请求响应
             response = client.getAcsResponse(request);
 
