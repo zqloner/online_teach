@@ -7,6 +7,7 @@ import com.atguigu.serviceedu.entity.vo.CourseInfoVo;
 import com.atguigu.serviceedu.entity.vo.CoursePublishVo;
 import com.atguigu.serviceedu.entity.vo.CourseQuery;
 import com.atguigu.serviceedu.entity.vo.front.CourseQueryVo;
+import com.atguigu.serviceedu.entity.vo.front.CourseWebVo;
 import com.atguigu.serviceedu.mapper.EduCourseMapper;
 import com.atguigu.serviceedu.service.EduChapterService;
 import com.atguigu.serviceedu.service.EduCourseDescriptionService;
@@ -206,5 +207,18 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         map.put("hasPrevious", hasPrevious);
 
         return map;
+    }
+
+    @Override
+    public CourseWebVo selectInfoWebById(String id) {
+        this.updatePageViewCount(id);
+        return baseMapper.selectInfoWebById(id);
+    }
+
+    @Override
+    public void updatePageViewCount(String id) {
+        EduCourse eduCourse = baseMapper.selectById(id);
+        eduCourse.setViewCount(eduCourse.getViewCount() + 1);
+        baseMapper.updateById(eduCourse);
     }
 }

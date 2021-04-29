@@ -5,6 +5,7 @@ import com.atguigu.serviceedu.entity.vo.CourseInfoVo;
 import com.atguigu.serviceedu.entity.vo.CoursePublishVo;
 import com.atguigu.serviceedu.entity.vo.CourseQuery;
 import com.atguigu.serviceedu.entity.vo.front.CourseQueryVo;
+import com.atguigu.serviceedu.entity.vo.front.CourseWebVo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -36,4 +37,17 @@ public interface EduCourseService extends IService<EduCourse> {
     List<EduCourse> selectByTeacherId(String teacherId);
 
     Map<String, Object> pageListWeb(Page<EduCourse> pageParam, CourseQueryVo courseQuery);
+
+    /**
+     * 获取课程信息
+     * @param id
+     * @return
+     */
+    CourseWebVo selectInfoWebById(String id);
+
+    /**
+     * 更新课程浏览数
+     * @param id
+     */
+    void updatePageViewCount(String id);
 }

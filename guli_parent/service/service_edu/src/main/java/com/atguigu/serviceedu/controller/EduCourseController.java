@@ -6,6 +6,9 @@ import com.atguigu.serviceedu.entity.EduCourse;
 import com.atguigu.serviceedu.entity.vo.CourseInfoVo;
 import com.atguigu.serviceedu.entity.vo.CoursePublishVo;
 import com.atguigu.serviceedu.entity.vo.CourseQuery;
+import com.atguigu.serviceedu.entity.vo.chapter.ChapterVo;
+import com.atguigu.serviceedu.entity.vo.front.CourseWebVo;
+import com.atguigu.serviceedu.service.EduChapterService;
 import com.atguigu.serviceedu.service.EduCourseService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiOperation;
@@ -29,6 +32,9 @@ import java.util.List;
 public class EduCourseController {
     @Autowired
     private EduCourseService eduCourseService;
+
+    @Autowired
+    private EduChapterService eduChapterService;
 
     @ApiOperation(value = "新增课程")
     @PostMapping("save-course-info")
@@ -108,6 +114,21 @@ public class EduCourseController {
         } else {
             return R.error();
         }
+    }
+
+    @ApiOperation(value = "根据ID查询课程")
+    @GetMapping(value = "{courseId}")
+    public R getById(
+            @ApiParam(name = "courseId", value = "课程ID", required = true)
+            @PathVariable String courseId){
+
+        //查询课程信息和讲师信息
+        CourseWebVo courseWebVo = eduCourseService.selectInfoWebById(courseId);
+
+        //查询当前课程的章节信息
+        List<ChapterVo> chapterVoList = eduChapterService.nestedList(courseId);
+
+        return R.ok().data("course", courseWebVo).data("chapterVoList", chapterVoList);
     }
 }
 

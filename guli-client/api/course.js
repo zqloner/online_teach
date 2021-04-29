@@ -13,5 +13,11 @@ export default {
       url: `/serviceedu/edu-subject/getSubjects`,
       method: 'get'
     })
+  },
+  getById(courseId) {
+    return request({
+      url: `/serviceedu/edu-course/${courseId}`,
+      method: 'get'
+    })
   }
 }
