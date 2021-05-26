@@ -41,5 +41,23 @@ public class TOrderController {
         TOrder order = tOrderService.getOne(wrapper);
         return R.ok().data("item", order);
     }
+
+    /*
+    根据用户id和课程id查询订单信息
+     */
+    @GetMapping("isBuyCourse/{memberid}/{id}")
+    public boolean isBuyCourse(@PathVariable("memberid") String memberid,
+                               @PathVariable("id") String id) {
+        //订单状态是1表示支付成功
+        int count = tOrderService.count(new QueryWrapper<TOrder>().
+                eq("member_id", memberid).
+                eq("course_id", id).
+                eq("status", 1));
+        if(count>0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 

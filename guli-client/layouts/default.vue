@@ -180,7 +180,6 @@ export default {
       })
     },
     showInfo() {
-      //debugger
       var jsonStr = cookie.get("guli_ucenter");
       //alert(jsonStr)
       if (jsonStr) {
@@ -189,7 +188,6 @@ export default {
     },
 
     logout() {
-      //debugger
       cookie.set('guli_ucenter', "", {domain: 'localhost'})
       cookie.set('guli_token', "", {domain: 'localhost'})
 

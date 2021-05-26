@@ -40,8 +40,11 @@
                     <a class="c-fff vam" title="收藏" href="#" >收藏</a>
                 </span>
             </section>
-            <section class="c-attr-mt">
-              <a @click="createOrders()" href="#" title="立即购买" class="comm-btn c-btn-3">立即购买</a>
+            <section v-if="isBuy || Number(course.price)===0" class="c-attr-mt">
+              <a href="#" title="立即观看" class="comm-btn c-btn-3" >立即观看</a>
+            </section>
+            <section v-else class="c-attr-mt">
+              <a href="#" title="立即购买" class="comm-btn c-btn-3" @click="createOrder()">立即购买</a>
             </section>
           </section>
         </aside>
@@ -271,17 +274,14 @@ export default {
       total:10,
       comment:{},
       course:{},
-      chapterList:[]
+      chapterList:[],
+      isBuy:''
     }
   },
   asyncData({params, error}) {
-    return course.getById(params.id).then(response => {
-      console.log(response);
-      return {
-        course: response.data.data.course,
-        chapterList: response.data.data.chapterVoList
-      }
-    })
+    return {
+      courseId:params.id
+    }
   },
   created() {
     this.initData();
@@ -289,10 +289,10 @@ export default {
   },
   methods:{
     initData(){
-      this.courseId = this.$route.params.id
       course.getById(this.courseId).then(response => {
         this.course = response.data.data.course
         this.chapterList = response.data.data.chapterVoList
+        this.isBuy=response.data.data.isBuy
       })
     },
     initComment(){
@@ -316,7 +316,7 @@ export default {
       })
     },
     //根据课程id，调用接口方法生成订单
-    createOrders(){
+    createOrder(){
       ordersApi.createOrder(this.courseId).then(response => {
         if(response.data.success){
           //订单创建成功，跳转到订单页面
