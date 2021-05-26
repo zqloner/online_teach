@@ -19,14 +19,14 @@ export default {
   //3、生成微信支付二维码
   createNative(cid) {
     return request({
-      url: '/orderservice/log/createNative/'+cid,
+      url: '/orderservice/paylog/createNative/'+cid,
       method: 'get'
     })
   },
   //4、根据id获取订单支付状态
   queryPayStatus(cid) {
     return request({
-      url: '/orderservice/log/queryPayStatus/'+cid,
+      url: '/orderservice/paylog/queryPayStatus/'+cid,
       method: 'get'
     })
   }
