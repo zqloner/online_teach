@@ -19,7 +19,7 @@
       <div>
         <article class="c-v-pic-wrap" style="height: 357px;">
           <section id="videoPlay" class="p-h-video-box">
-            <img :src="course.cover" :alt="course.title" class="dis c-v-pic">
+            <img height="357px" :src="course.cover" :alt="course.title" class="dis c-v-pic">
           </section>
         </article>
         <aside class="c-attr-wrap">
@@ -41,12 +41,12 @@
                 </span>
             </section>
             <section class="c-attr-mt">
-              <a href="#" title="立即观看" class="comm-btn c-btn-3">立即观看</a>
+              <a @click="createOrders()" href="#" title="立即购买" class="comm-btn c-btn-3">立即购买</a>
             </section>
           </section>
         </aside>
         <aside class="thr-attr-box">
-          <ol class="thr-attr-ol clearfix">
+          <ol class="thr-attr-ol">
             <li>
               <p>&nbsp;</p>
               <aside>
@@ -259,6 +259,7 @@
 <script>
 import course from "@/api/course"
 import comment from '@/api/commonedu'
+import ordersApi from '@/api/order'
 export default {
   name: 'courseDetail',
   data() {
@@ -313,7 +314,16 @@ export default {
       comment.getPageList(page, this.limit,this.courseId).then(response => {
         this.data = response.data.data
       })
-    }
+    },
+    //根据课程id，调用接口方法生成订单
+    createOrders(){
+      ordersApi.createOrder(this.courseId).then(response => {
+        if(response.data.success){
+          //订单创建成功，跳转到订单页面
+          this.$router.push({ path: '/order/'+ response.data.data.orderId })
+        }
+      })
+    },
   }
 }
 </script>

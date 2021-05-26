@@ -1,12 +1,15 @@
 package com.atguigu.serviceedu.controller.client;
 
 import com.atguigu.commonutils.commonresult.R;
+import com.atguigu.commonutils.ordervo.CourseOrderInfo;
 import com.atguigu.serviceedu.entity.EduCourse;
 import com.atguigu.serviceedu.entity.vo.front.CourseQueryVo;
+import com.atguigu.serviceedu.entity.vo.front.CourseWebVo;
 import com.atguigu.serviceedu.service.EduCourseService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -40,4 +43,13 @@ public class CourseFrontController {
         return  R.ok().data(map);
     }
 
+
+    //根据课程id查询课程信息
+    @GetMapping("getDto/{courseId}")
+    public CourseOrderInfo getCourseInfoDto(@PathVariable String courseId) {
+        CourseWebVo courseWebVo = eduCourseService.selectInfoWebById(courseId);
+        CourseOrderInfo courseOrderInfo = new CourseOrderInfo();
+        BeanUtils.copyProperties(courseWebVo,courseOrderInfo);
+        return courseOrderInfo;
+    }
 }

@@ -3,6 +3,7 @@ package com.atguigu.serviceucenter.controller;
 
 import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.commonutils.jwtutil.JwtUtils;
+import com.atguigu.commonutils.ordervo.UcenterMemberOrder;
 import com.atguigu.servicebase.exceptionhandler.GuliException;
 import com.atguigu.serviceucenter.entity.UcenterMember;
 import com.atguigu.serviceucenter.entity.vo.LoginVo;
@@ -59,12 +60,12 @@ public class UcenterMemberController {
     //根据token字符串获取用户信息
     @ApiOperation(value = "根据token字符串获取用户信息")
     @GetMapping("getInfoUc/{id}")
-    public UcenterMember getInfo(@PathVariable String id) {
+    public UcenterMemberOrder getInfo(@PathVariable String id) {
         //根据用户id获取用户信息
         UcenterMember ucenterMember = ucenterMemberService.getById(id);
-        UcenterMember memeber = new UcenterMember();
-        BeanUtils.copyProperties(ucenterMember,memeber);
-        return memeber;
+        UcenterMemberOrder ucenterMemberOrder = new UcenterMemberOrder();
+        BeanUtils.copyProperties(ucenterMember,ucenterMemberOrder);
+        return ucenterMemberOrder;
     }
 }
 
