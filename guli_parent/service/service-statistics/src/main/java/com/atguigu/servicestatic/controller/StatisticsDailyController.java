@@ -4,10 +4,9 @@ package com.atguigu.servicestatic.controller;
 import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.servicestatic.service.StatisticsDailyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -27,6 +26,16 @@ public class StatisticsDailyController {
     public R createStatisticsByDate(@PathVariable String day) {
         statisticsDailyService.createStatisticsByDay(day);
         return R.ok();
+    }
+
+
+    /*
+    图标显示,返回两部分数据,日期json数组,数量json数组
+     */
+    @GetMapping("show-chart/{begin}/{end}/{type}")
+    public R showChart(@PathVariable String begin,@PathVariable String end,@PathVariable String type){
+        Map<String, Object> map = statisticsDailyService.getChartData(begin, end, type);
+        return R.ok().data(map);
     }
 }
 
