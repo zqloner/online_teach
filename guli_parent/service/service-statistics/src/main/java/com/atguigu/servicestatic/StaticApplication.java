@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @Description:
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan("com.atguigu.servicestatic.mapper")
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableScheduling
 public class StaticApplication {
     public static void main(String[] args) {
         SpringApplication.run(StaticApplication.class, args);
