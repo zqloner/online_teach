@@ -170,7 +170,6 @@ export default {
       this.page = page
       this.listLoading = true
       course.getPageList(this.page, this.limit, this.searchObj).then(response => {
-        // debugger 设置断点调试
         if (response.success === true) {
           this.list = response.data.rows
           this.total = response.data.total

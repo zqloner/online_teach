@@ -16,7 +16,7 @@ export default {
   },
   getById(courseId) {
     return request({
-      url: `/serviceedu/edu-course/${courseId}`,
+      url: `/serviceedu/coursefront/${courseId}`,
       method: 'get'
     })
   }

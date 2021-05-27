@@ -14,7 +14,6 @@ const service = axios.create({
 // http request 拦截器
 service.interceptors.request.use(
   config => {
-    //debugger
     if (cookie.get('guli_token')) {
       config.headers['token'] = cookie.get('guli_token');
     }
@@ -26,11 +25,9 @@ service.interceptors.request.use(
 // http response 拦截器
 service.interceptors.response.use(
   response => {
-    //debugger
     if (response.data.code == 28004) {
       console.log("response.data.resultCode是28004")
       // 返回 错误代码-1 清除ticket信息并跳转到登录页面
-      //debugger
       window.location.href="/login"
       return
     }else{

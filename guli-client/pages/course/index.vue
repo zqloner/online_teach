@@ -181,7 +181,6 @@ export default {
     },
     //查询所有一级分类
     initSubject(){
-      //debugger
       course.getAllSubjects().then(response => {
         this.subjectNestedList = response.data.data.items
       })
@@ -189,7 +188,6 @@ export default {
 
     //点击一级分类，显示对应的二级分类，查询数据
     searchOne(subjectParentId, index) {
-      //debugger
       this.oneIndex = index
       this.twoIndex = -1
 

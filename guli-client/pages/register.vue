@@ -91,8 +91,6 @@
           //his.sending原为true,请求成功，!this.sending == true，主要是防止有人把disabled属性去掉，多次点击；
           if (!this.sending)
             return;
-
-          //debugger
           // prop 换成你想监听的prop字段
           this.$refs.userForm.validateField('mobile', (errMsg) => {
             if (errMsg == '') {
@@ -134,7 +132,6 @@
         },
 
         checkPhone (rule, value, callback) {
-          //debugger
           if (!(/^1[34578]\d{9}$/.test(value))) {
             return callback(new Error('手机号码格式不正确'))
           }

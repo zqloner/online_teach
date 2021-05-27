@@ -85,7 +85,7 @@
             :action="BASE_API+'/servicevod/video/upload'"
             :limit="1"
             class="upload-demo">
-            <el-button size="small" type="primary">上传视频</el-button>
+            <el-button size="small" type="primary" @click="doUploadVedio">上传视频</el-button>
             <el-tooltip placement="right-end">
               <div slot="content">最大支持1G，<br>
                 支持3GP、ASF、AVI、DAT、DV、FLV、F4V、<br>
@@ -98,7 +98,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogVideoFormVisible = false">取 消</el-button>
+        <el-button @click="()=>{dialogVideoFormVisible = false,saveVideoBtnDisabled = false}">取 消</el-button>
         <el-button :disabled="saveVideoBtnDisabled" type="primary" @click="saveOrUpdateVideo">确 定</el-button>
       </div>
     </el-dialog>
@@ -211,6 +211,10 @@ export default {
       })
     },
 
+    doUploadVedio() {
+      this.saveVideoBtnDisabled = true
+    },
+
     helpSave(){
       this.dialogChapterFormVisible = false// 如果保存成功则关闭对话框
       this.fetchChapterNestedListByCourseId()// 刷新列表
@@ -258,6 +262,7 @@ export default {
     saveDataVideo() {
       this.video.courseId = this.courseId
       this.video.chapterId = this.chapterId
+      console.log(this.video)
       video.saveVideoInfo(this.video).then(response => {
         this.$message({
           type: 'success',
@@ -318,6 +323,7 @@ export default {
     },
     //成功回调
     handleVodUploadSuccess(response, file, fileList) {
+      this.saveVideoBtnDisabled = false;
       this.video.videoSourceId = response.data.videoId
       this.video.videoOriginalName = file.name;
     },
