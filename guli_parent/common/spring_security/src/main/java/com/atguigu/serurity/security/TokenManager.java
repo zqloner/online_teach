@@ -10,6 +10,7 @@ import java.util.Date;
 /**
  * <p>
  * token管理
+ * token操作工具类
  * </p>
  *
  * @author qy

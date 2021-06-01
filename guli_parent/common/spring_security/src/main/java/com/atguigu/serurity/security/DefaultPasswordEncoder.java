@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * <p>
- * t密码的处理方法类型
+ * 密码的处理方法类型
  * </p>
  *
  * @author qy

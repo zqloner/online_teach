@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 /**
  * <p>
+ * 相关实体类
  * 用户实体类
  * </p>
  *
