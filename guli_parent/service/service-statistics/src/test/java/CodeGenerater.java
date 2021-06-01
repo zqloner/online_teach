@@ -55,7 +55,7 @@ public class CodeGenerater {
         pc.setModuleName("servicestatic"); //模块名
         pc.setParent("com.atguigu");
         pc.setController("controller");
-        pc.setEntity("entity");
+        pc.setEntity("com.atguigu.serurity.entity");
         pc.setService("service");
         pc.setMapper("mapper");
         mpg.setPackageInfo(pc);

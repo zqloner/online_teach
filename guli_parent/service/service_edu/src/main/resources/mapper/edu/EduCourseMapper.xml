@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.serviceedu.mapper.EduCourseMapper">
 
-<select id="getCoursePublishVoById" resultType="com.atguigu.serviceedu.entity.vo.CoursePublishVo">
+<select id="getCoursePublishVoById" resultType="com.atguigu.serviceedu.com.atguigu.serurity.entity.vo.CoursePublishVo">
       SELECT
         c.title,
         c.cover,
@@ -19,7 +19,7 @@
     WHERE
         c.id = #{id}
 </select>
-<select id="selectInfoWebById" resultType="com.atguigu.serviceedu.entity.vo.front.CourseWebVo">
+<select id="selectInfoWebById" resultType="com.atguigu.serviceedu.com.atguigu.serurity.entity.vo.front.CourseWebVo">
         SELECT
             c.id,
             c.title,
