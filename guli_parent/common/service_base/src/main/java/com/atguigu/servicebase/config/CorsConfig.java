@@ -1,7 +1,6 @@
 package com.atguigu.servicebase.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -12,7 +11,7 @@ import org.springframework.web.filter.CorsFilter;
  * @CreateTime: 2021/4/138:54
  * @Company: MGL
  */
-@Configuration
+//@Configuration
 public class CorsConfig {
     private CorsConfiguration buildConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();

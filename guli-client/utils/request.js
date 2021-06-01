@@ -6,7 +6,8 @@ import cookie from 'js-cookie'
 const service = axios.create({
   //baseURL: 'http://qy.free.idcfengye.com/api', // api 的 base_url
   //baseURL: 'http://localhost:8210', // api 的 base_url
-  baseURL: 'http://192.168.29.102:81',
+  //baseURL: 'http://192.168.29.102:81',  //nignx地址
+  baseURL: 'http://localhost:8222',  //网关地址
   timeout: 15000 // 请求超时时间
 
 })
