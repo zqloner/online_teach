@@ -1,8 +1,9 @@
 import request from '@/utils/request'
 
+// 登录
 export function login(username, password) {
   return request({
-    url: '/serviceedu/user/login',
+    url: '/serviceacl/login',
     method: 'post',
     data: {
       username,
@@ -11,17 +12,27 @@ export function login(username, password) {
   })
 }
 
+// 获取用户信息
 export function getInfo(token) {
   return request({
-    url: '/serviceedu/user/info',
+    url: '/serviceacl/index/info',
     method: 'get',
     params: { token }
   })
 }
 
+// 登出
 export function logout() {
   return request({
-    url: '/user/logout',
+    url: '/serviceacl/index/logout',
     method: 'post'
+  })
+}
+
+// 获取菜单权限数据
+export function getMenu() {
+  return request({
+    url: '/serviceacl/index/menu',
+    method: 'get'
   })
 }

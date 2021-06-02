@@ -20,13 +20,12 @@ import SidebarItem from './SidebarItem'
 
 export default {
   components: { SidebarItem },
+  name: 'Sidebars',
   computed: {
     ...mapGetters([
+      'routes',
       'sidebar'
     ]),
-    routes() {
-      return this.$router.options.routes
-    },
     isCollapse() {
       return !this.sidebar.opened
     }
