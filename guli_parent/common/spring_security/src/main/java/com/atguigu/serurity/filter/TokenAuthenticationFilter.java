@@ -1,5 +1,6 @@
 package com.atguigu.serurity.filter;
 
+
 import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.commonutils.commonresult.ResponseUtil;
 import com.atguigu.serurity.security.TokenManager;
@@ -23,7 +24,7 @@ import java.util.List;
 
 /**
  * <p>
- * 授权过滤器
+ * 访问过滤器
  * </p>
  *
  * @author qy
@@ -43,7 +44,7 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
             throws IOException, ServletException {
         logger.info("================="+req.getRequestURI());
-        if(req.getRequestURI().indexOf("admin") == 1) {
+        if(req.getRequestURI().indexOf("admin") == -1) {
             chain.doFilter(req, res);
             return;
         }

@@ -44,23 +44,23 @@ export const asyncRoutes = [
 
   // 讲师管理
   {
-    path: '/edu/teacher',
+    path: '/teacher',
     component: Layout,
-    redirect: '/edu/edu/list',
-    name: 'Teacher',
-    meta: { title: '讲师管理', icon: 'user' },
+    redirect: '/teacher/table',
+    name: '讲师管理',
+    meta: { title: '讲师管理', icon: 'example' },
     children: [
       {
-        path: 'list',
-        name: 'EduTeacherList',
+        path: 'table',
+        name: '讲师列表',
         component: () => import('@/views/edu/teacher/list'),
-        meta: { title: '讲师列表' }
+        meta: { title: '讲师列表', icon: 'table' }
       },
       {
-        path: 'create',
-        name: 'EduTeacherCreate',
+        path: 'AddTeacher',
+        name: '添加讲师',
         component: () => import('@/views/edu/teacher/form'),
-        meta: { title: '添加讲师' }
+        meta: { title: '添加讲师', icon: 'tree' }
       },
       {
         path: 'edit/:id',
@@ -71,47 +71,47 @@ export const asyncRoutes = [
       }
     ]
   },
-// 课程分类管理
+
   {
-    path: '/edu/subject',
+    path: '/subject',
     component: Layout,
-    redirect: '/edu/subject/list',
-    name: 'Subject',
-    meta: { title: '课程分类管理', icon: 'nested' },
+    redirect: '/subject/list',
+    name: '课程分类管理',
+    meta: { title: '课程分类管理', icon: 'example' },
     children: [
       {
         path: 'list',
-        name: 'EduSubjectList',
+        name: '课程分类列表',
         component: () => import('@/views/edu/subject/list'),
-        meta: { title: '课程分类列表' }
+        meta: { title: '课程分类列表', icon: 'table' }
       },
       {
         path: 'import',
-        name: 'EduSubjectImport',
+        name: '添加课程分类',
         component: () => import('@/views/edu/subject/import'),
-        meta: { title: '导入课程分类' }
+        meta: { title: '添加课程分类', icon: 'tree' }
       }
     ]
   },
-  // 课程管理
+
   {
-    path: '/edu/course',
+    path: '/course',
     component: Layout,
-    redirect: '/edu/course/list',
-    name: 'Course',
-    meta: { title: '课程管理', icon: 'form' },
+    redirect: '/course/list',
+    name: '课程管理',
+    meta: { title: '课程管理', icon: 'example' },
     children: [
       {
         path: 'list',
-        name: 'EduCourseList',
+        name: '课程列表',
         component: () => import('@/views/edu/course/list'),
-        meta: { title: '课程列表' }
+        meta: { title: '课程列表', icon: 'table' }
       },
       {
         path: 'info',
-        name: 'EduCourseInfo',
+        name: '添加课程',
         component: () => import('@/views/edu/course/info'),
-        meta: { title: '发布课程' }
+        meta: { title: '添加课程', icon: 'tree' }
       },
       {
         path: 'info/:id',
@@ -136,27 +136,100 @@ export const asyncRoutes = [
       }
     ]
   },
-  // 统计数据
+
   {
     path: '/statistics/daily',
     component: Layout,
-    name: 'Statistics',
-    meta: { title: '统计分析', icon: 'eye' },
+    redirect: '/statistics/daily/create',
+    name: '统计分析',
+    meta: { title: '统计分析', icon: 'example' },
     children: [
       {
         path: 'create',
-        name: 'StatisticsDailyCreate',
+        name: '生成数据',
         component: () => import('@/views/statistics/daily/create'),
-        meta: { title: '生成数据'}
+        meta: { title: '生成数据', icon: 'table' }
       },
       {
         path: 'show',
-        name: 'StatisticsDailyShow',
+        name: '图表显示',
         component: () => import('@/views/statistics/daily/show'),
-        meta: { title: '图表显示' }
+        meta: { title: '图表显示', icon: 'tree' }
       }
     ]
   },
+
+  {
+    path: '/acl',
+    component: Layout,
+    redirect: '/acl/user/list',
+    name: '权限管理',
+    meta: { title: '权限管理', icon: 'chart' },
+    children: [
+      {
+        path: 'user/list',
+        name: '用户管理',
+        component: () => import('@/views/acl/user/list'),
+        meta: { title: '用户管理' }
+      },
+      {
+        path: 'role/list',
+        name: '角色管理',
+        component: () => import('@/views/acl/role/list'),
+        meta: { title: '角色管理' }
+      },
+      {
+        path: 'role/form',
+        name: '角色添加',
+        component: () => import('@/views/acl/role/form'),
+        meta: { title: '角色添加' },
+        hidden: true
+      },
+      {
+        path: 'role/update/:id',
+        name: '角色修改',
+        component: () => import('@/views/acl/role/form'),
+        meta: { title: '角色修改' },
+        hidden: true
+      },
+      {
+        path: 'role/distribution/:id',
+        name: '角色权限',
+        component: () => import('@/views/acl/role/roleForm'),
+        meta: { title: '角色权限' },
+        hidden: true
+      },
+      {
+        path: 'menu/list',
+        name: '菜单管理',
+        component: () => import('@/views/acl/menu/list'),
+        meta: { title: '菜单管理' }
+      },
+      {
+        path: 'user/add',
+        name: '用户添加',
+        component: () => import('@/views/acl/user/form'),
+        meta: { title: '用户添加' },
+        hidden: true
+      },
+      {
+        path: 'user/update/:id',
+        name: '用户修改',
+        component: () => import('@/views/acl/user/form'),
+        meta: { title: '用户修改' },
+        hidden: true
+      },
+      {
+        path: 'user/role/:id',
+        name: '用户角色',
+        component: () => import('@/views/acl/user/roleForm'),
+        meta: { title: '用户角色' },
+        hidden: true
+      }
+
+    ]
+  },
+
   { path: '*', redirect: '/404', hidden: true }
 ]
 

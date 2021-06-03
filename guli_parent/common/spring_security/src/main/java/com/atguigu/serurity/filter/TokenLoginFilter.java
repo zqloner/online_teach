@@ -1,5 +1,6 @@
 package com.atguigu.serurity.filter;
 
+
 import com.atguigu.commonutils.commonresult.R;
 import com.atguigu.commonutils.commonresult.ResponseUtil;
 import com.atguigu.serurity.entity.SecurityUser;
@@ -23,8 +24,7 @@ import java.util.ArrayList;
 
 /**
  * <p>
- * 认证过滤器
- * 继承UsernamePasswordAuthenticationFilter，对用户名密码进行登录校验
+ * 登录过滤器，继承UsernamePasswordAuthenticationFilter，对用户名密码进行登录校验
  * </p>
  *
  * @author qy
@@ -41,7 +41,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         this.tokenManager = tokenManager;
         this.redisTemplate = redisTemplate;
         this.setPostOnly(false);
-        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/serviceacl/login","POST"));
+        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/admin/acl/login","POST"));
     }
 
     @Override

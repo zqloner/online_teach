@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/serviceacl/index")
+@RequestMapping("/admin/acl/index")
 //@CrossOrigin
 public class IndexController {
 

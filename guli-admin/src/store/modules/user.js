@@ -34,6 +34,7 @@ const user = {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(response => {
+         // debugger
           const data = response.data
           setToken(data.token)
           commit('SET_TOKEN', data.token)
@@ -44,6 +45,7 @@ const user = {
       })
     },
     // Login({ commit }) {
+    //   debugger
     //   const data = {
     //     'token': 'helen'
     //   }
@@ -55,6 +57,7 @@ const user = {
     async GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo(state.token).then(response => {
+          // debugger
           const data = response.data
           if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
             commit('SET_ROLES', data.roles)
@@ -77,6 +80,7 @@ const user = {
       })
     },
     // GetInfo({ commit }) {
+    //   debugger
     //   const data = {
     //     'roles': [
     //       'admin'
@@ -107,6 +111,7 @@ const user = {
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
+          debugger
           commit('SET_TOKEN', '')// 清空前端vuex中存储的数据
           commit('SET_ROLES', [])// 清空前端vuex中存储的数据
           commit('SET_BUTTONS', [])
@@ -121,6 +126,7 @@ const user = {
     // 前端 登出
     FedLogOut({ commit }) {
       return new Promise(resolve => {
+        debugger
         commit('SET_TOKEN', '')
         removeToken()
         resolve()

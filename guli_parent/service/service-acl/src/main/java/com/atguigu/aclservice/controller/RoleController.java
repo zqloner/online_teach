@@ -23,7 +23,7 @@ import java.util.List;
  * @since 2020-01-12
  */
 @RestController
-@RequestMapping("/serviceacl/role")
+@RequestMapping("/admin/acl/role")
 //@CrossOrigin
 public class RoleController {
 
